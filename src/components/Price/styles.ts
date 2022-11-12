@@ -24,6 +24,7 @@ export const SavingsWrapper = styled.div`
     display: flex;
     margin-top: 5px;
     align-items: flex-start;
+    align-self: flex-end;
 `;
 
 export const Savings = styled.div`
@@ -36,9 +37,12 @@ export const Approx = styled.div`
 export const DisplayPrice = styled.div`
     display: flex;
     align-items: flex-start;
+    align-self: flex-end;
 `;
 
 export const PriceWrapper = styled.div`
     align-self: ${({ hasSavings }: ISavings) =>
         hasSavings ? 'end' : 'center'};
+    display: flex;
+    flex-direction: column;
 `;

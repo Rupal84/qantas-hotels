@@ -5,7 +5,8 @@ interface IRating {
     rating: number;
     ratingType?: 'self' | 'star';
 }
-export const Rating = ({ rating }: IRating): JSX.Element => {
+export const Rating = ({ rating, ratingType }: IRating): JSX.Element => {
+    const isStar = ratingType === 'star';
     const numOfFullRatings = Math.trunc(rating);
     const hasHalfRating = useMemo(() => {
         const halfRating = rating - numOfFullRatings;
@@ -15,12 +16,12 @@ export const Rating = ({ rating }: IRating): JSX.Element => {
     const halfRatingRef = useRef<boolean>(hasHalfRating);
     const getIconType = (index: number): string => {
         if (index < numOfFullRatings) {
-            return 'ion:star';
+            return isStar ? 'ion:star' : 'ion:ellipse-sharp';
         } else if (halfRatingRef.current) {
             halfRatingRef.current = false;
-            return 'ion:star-half';
+            return isStar ? 'ion:star-half' : 'ion:contrast-outline';
         } else {
-            return 'ion:star-outline';
+            return isStar ? 'ion:star-outline' : 'ion:ellipse-outline';
         }
     };
     const getIcons = () => {
