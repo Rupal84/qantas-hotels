@@ -1,7 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { SemiBold } from './common/styles';
-import { Rating } from './components/Rating';
+import {
+    Container,
+    SemiBold,
+    SortWrapper,
+    StyledLabel,
+    StyledParagraph,
+} from './common/styles';
 import { SearchRecord } from './components/SearchRecord';
 import logo from './images/qantas-logo.png';
 import { fetch, hotels } from './slices/results.slice';
@@ -14,24 +19,31 @@ function App() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     return (
-        <>
-            <img src={logo} alt="qantas logo" />
+        <Container>
+            <img src={logo} alt="qantas logo" width={160} />
             {results.length && (
                 <>
-                    <p>
-                        {results.length} hotels in <SemiBold>Sydney</SemiBold>
-                    </p>
-                    <Rating rating={2.5} />
-                    <select defaultValue={'l2h'}>
-                        <option value={'l2h'}>Price high-low</option>
-                        <option value={'h2l'}>Price low-high</option>
-                    </select>
+                    <SortWrapper>
+                        <StyledParagraph>
+                            {results.length} <i>hotels</i> in
+                            <SemiBold> Sydney</SemiBold>
+                        </StyledParagraph>
+                        <div>
+                            <StyledLabel htmlFor={'sortByPrice'}>
+                                Sort by &nbsp;
+                            </StyledLabel>
+                            <select defaultValue={'l2h'} id={'sortByPrice'}>
+                                <option value={'l2h'}>Price high-low</option>
+                                <option value={'h2l'}>Price low-high</option>
+                            </select>
+                        </div>
+                    </SortWrapper>
                     {results.map((result) => {
                         return <SearchRecord key={result.id} hotel={result} />;
                     })}
                 </>
             )}
-        </>
+        </Container>
     );
 }
 

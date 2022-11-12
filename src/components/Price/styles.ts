@@ -1,17 +1,18 @@
 import styled, { css } from 'styled-components';
-
+interface ISavings {
+    hasSavings?: boolean;
+}
 const SavingsStyle = css`
-    color: red;
+    color: #e91e63;
     font-size: x-large;
     margin: 0;
 `;
 export const PerNightText = styled.p`
-    font-weight: 500;
+    font-weight: 400;
     color: darkslategray;
     margin: 0;
 `;
-export const DollarSign = styled.div`
-    padding: 4px 8px 0 0;
+export const DollarSign = styled.sup`
     font-size: large;
 `;
 export const Amount = styled.div`
@@ -21,6 +22,7 @@ export const Amount = styled.div`
 `;
 export const SavingsWrapper = styled.div`
     display: flex;
+    margin-top: 5px;
     align-items: flex-start;
 `;
 
@@ -37,5 +39,6 @@ export const DisplayPrice = styled.div`
 `;
 
 export const PriceWrapper = styled.div`
-    height: 200px;
+    align-self: ${({ hasSavings }: ISavings) =>
+        hasSavings ? 'end' : 'center'};
 `;

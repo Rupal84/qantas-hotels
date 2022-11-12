@@ -12,7 +12,7 @@ export interface IHotel {
         };
         rating: {
             ratingValue: number;
-            ratingType: 'star';
+            ratingType: 'star' | 'self';
         };
     };
     offer: {
