@@ -66,13 +66,14 @@ function App() {
 }
 
 const sortByPrice = (sortOrder: string, results: IHotel[]) => {
-    return results.sort((hotelA, hotelB) => {
+    const sortedResults = results.sort((hotelA, hotelB) => {
         const priceHotelA = hotelA.offer.displayPrice.amount;
         const priceHotelB = hotelB.offer.displayPrice.amount;
         return sortOrder === 'l2h'
             ? priceHotelA - priceHotelB
             : priceHotelB - priceHotelA;
     });
+    return [...sortedResults];
 };
 
 export default App;
