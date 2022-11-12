@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react';
+import { useRef } from 'react';
 import { Icon } from '@iconify/react';
 import { Wrapper } from './styles';
 interface IRating {
@@ -8,12 +8,10 @@ interface IRating {
 export const Rating = ({ rating, ratingType }: IRating): JSX.Element => {
     const isStar = ratingType === 'star';
     const numOfFullRatings = Math.trunc(rating);
-    const hasHalfRating = useMemo(() => {
-        const halfRating = rating - numOfFullRatings;
-        return !!halfRating;
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [rating]);
+    const halfRating = rating - numOfFullRatings;
+    const hasHalfRating = !!halfRating;
     const halfRatingRef = useRef<boolean>(hasHalfRating);
+    halfRatingRef.current = hasHalfRating;
     const getIconType = (index: number): string => {
         if (index < numOfFullRatings) {
             return isStar ? 'ion:star' : 'ion:ellipse-sharp';
