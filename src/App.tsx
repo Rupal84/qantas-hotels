@@ -34,7 +34,7 @@ function App() {
                     <SortWrapper>
                         <StyledParagraph>
                             {results.length} <i>hotels</i> in
-                            <SemiBold> Sydney</SemiBold>
+                            <SemiBold> Sydney.</SemiBold>
                         </StyledParagraph>
                         <div>
                             <StyledLabel htmlFor={'sortByPrice'}>

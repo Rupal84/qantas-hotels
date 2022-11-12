@@ -6,17 +6,18 @@ interface IProps {
 
 export const Address = styled.p`
     color: darkslategray;
-    font-size: large;
+    font-size: medium;
     margin: 0;
 `;
 export const Name = styled.div`
     color: #e91e63;
+    font-size: smaller;
     text-decoration: underline;
     margin-top: ${({ hasCancellation }: IProps) =>
         hasCancellation ? '0' : '20px'};
 `;
 export const Cancellation = styled.div`
-    font-size: large;
+    font-size: medium;
     color: green;
 `;
 
@@ -33,6 +34,7 @@ export const TitleWrapper = styled.div`
 `;
 export const StyledH3 = styled.h3`
     margin: 0;
+    font-weight: 600;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

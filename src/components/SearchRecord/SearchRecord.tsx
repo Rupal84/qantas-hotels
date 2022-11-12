@@ -21,7 +21,7 @@ export const SearchRecord = ({ hotel }: ISearchRecord) => {
             <Image url={url} caption={caption} />
             <RightContent>
                 <HotelDetails
-                    address={address.toString()}
+                    address={address.join(', ')}
                     name={name}
                     title={title}
                     cancellation={cancellationOption.cancellationType}

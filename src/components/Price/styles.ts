@@ -10,6 +10,7 @@ const SavingsStyle = css`
 export const PerNightText = styled.p`
     font-weight: 400;
     color: darkslategray;
+    font-size: medium;
     margin: 0;
 `;
 export const DollarSign = styled.sup`
