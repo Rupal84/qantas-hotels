@@ -21,7 +21,7 @@ describe('App component', () => {
     afterEach(() => {
         jest.restoreAllMocks();
     });
-    it('renders learn react link', async () => {
+    it('renders correctly', async () => {
         const { getAllByText } = render(<App />);
         const numberOfElements = await waitFor(() => {
             return getAllByText(/dummy search component/i).length;

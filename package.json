@@ -19,7 +19,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test --coverage",
+        "test": "react-scripts test --coverage --no-cache --watchAll",
         "mock-server": "json-server --watch src/mocks/data.json --port 3001"
     },
     "eslintConfig": {
