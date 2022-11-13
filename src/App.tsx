@@ -1,4 +1,3 @@
-import Axios from 'axios';
 import { useEffect, useState } from 'react';
 import {
     Container,
@@ -10,16 +9,13 @@ import {
 import { IHotel } from './common/types';
 import { SearchRecord } from './components/SearchRecord';
 import logo from './images/qantas-logo.png';
+import { callApi } from './utils';
 
 function App() {
     const [results, setResults] = useState<IHotel[]>([]);
-    const getResults = async () =>
-        await Axios({
-            url: 'http://localhost:3001/results',
-            method: 'GET',
-        });
+
     useEffect(() => {
-        getResults().then((resp) => {
+        callApi().then((resp) => {
             const sortedResults = sortByPrice('l2h', resp.data);
             setResults(sortedResults);
         });

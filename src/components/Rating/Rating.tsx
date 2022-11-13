@@ -23,13 +23,14 @@ export const Rating = ({ rating, ratingType }: IRating): JSX.Element => {
         }
     };
     const getIcons = () => {
-        return [1, 2, 3, 4, 5].map((_, index) => (
+        const icons = [1, 2, 3, 4, 5].map((_, index) => (
             <Icon
                 key={`icon-${index}`}
                 icon={getIconType(index)}
                 color="orange"
             />
         ));
+        return icons;
     };
     return <Wrapper>{getIcons()}</Wrapper>;
 };

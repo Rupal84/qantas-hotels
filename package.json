@@ -19,7 +19,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test",
+        "test": "react-scripts test --coverage",
         "mock-server": "json-server --watch src/mocks/data.json --port 3001"
     },
     "eslintConfig": {
@@ -41,15 +41,32 @@
         ]
     },
     "devDependencies": {
-        "@types/styled-components": "^5.1.26",
         "@types/jest": "^27.0.1",
         "@types/node": "^16.7.13",
         "@types/react": "^18.0.0",
         "@types/react-dom": "^18.0.0",
+        "@types/styled-components": "^5.1.26",
+        "babel-jest": "^29.3.1",
         "eslint": "^8.27.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-prettier": "^4.2.1",
         "json-server": "^0.17.1",
-        "prettier": "^2.7.1"
+        "prettier": "^2.7.1",
+        "ts-jest": "^29.0.3"
+    },
+    "jest": {
+        "transform": {
+            "^.+\\.(ts|tsx|js|jsx)$": "ts-jest"
+        },
+        "transformIgnorePatterns": [
+            "node_modules/(?!@codemirror)/"
+        ],
+        "collectCoverageFrom": [
+            "**/*.{js,jsx,ts,tsx}",
+            "src/**/*.{js,ts,jsx,tsx}"
+        ],
+        "testMatch": [
+            "**/*.{spec,test}.{js,jsx,ts,tsx}"
+        ]
     }
 }
