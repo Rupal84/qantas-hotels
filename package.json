@@ -19,7 +19,7 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test --coverage --no-cache --watchAll",
+        "test": "react-scripts test  --coverage --watchAll",
         "mock-server": "json-server --watch src/mocks/data.json --port 3001"
     },
     "eslintConfig": {
@@ -61,12 +61,25 @@
         "transformIgnorePatterns": [
             "node_modules/(?!@codemirror)/"
         ],
-        "collectCoverageFrom": [
-            "**/*.{js,jsx,ts,tsx}",
-            "src/**/*.{js,ts,jsx,tsx}"
-        ],
         "testMatch": [
-            "**/*.{spec,test}.{js,jsx,ts,tsx}"
-        ]
+            "**/*.{spec,test}.{js,jsx,ts,tsx}",
+            "!**/*.index.ts"
+        ],
+        "collectCoverageFrom": [
+            "src/**/*.tsx",
+            "src/**/commonUtils.ts",
+            "src/components/*.tsx",
+            "!**/node_modules/**",
+            "!**/src/test-utils/**",
+            "!**/src/index.tsx"
+        ],
+        "coverageThreshold": {
+            "global": {
+                "statements": 90,
+                "branches": 75,
+                "functions": 85,
+                "lines": 100
+            }
+        }
     }
 }

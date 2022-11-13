@@ -1,12 +1,17 @@
-import { act, getByLabelText, render, waitFor } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import App from './App';
-import * as apiUtils from './utils/apiUtils';
+import * as apiUtils from './utils/commonUtils';
 import data from './mocks/data.json';
 import { IHotel } from './common/types';
 
 jest.mock('./components/SearchRecord', () => {
     return {
-        SearchRecord: () => <div>Dummy Search Component</div>,
+        SearchRecord: (props: any) => (
+            <div>
+                Dummy SearchRecord Component -{' '}
+                {props.hotel.offer.displayPrice.amount}
+            </div>
+        ),
     };
 });
 describe('App component', () => {
@@ -24,8 +29,28 @@ describe('App component', () => {
     it('renders correctly', async () => {
         const { getAllByText } = render(<App />);
         const numberOfElements = await waitFor(() => {
-            return getAllByText(/dummy search component/i).length;
+            return getAllByText('dummy SearchRecord component', {
+                exact: false,
+            }).length;
         });
         expect(numberOfElements).toBe(5);
+    });
+    it('should change default sorting', async () => {
+        const { getByLabelText, getAllByText } = render(<App />);
+        const sortedL2H = await waitFor(() => {
+            return getAllByText('dummy searchrecord component', {
+                exact: false,
+            });
+        });
+        expect(sortedL2H[0].textContent).toContain('227');
+        const select = getByLabelText(/sort by/i);
+        fireEvent.change(select, { target: { value: 'h2l' } });
+        const sortedH2L = await waitFor(() => {
+            return getAllByText('dummy searchrecord component', {
+                exact: false,
+            });
+        });
+
+        expect(sortedH2L[0].textContent).toContain('535');
     });
 });

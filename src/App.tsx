@@ -9,7 +9,7 @@ import {
 import { IHotel } from './common/types';
 import { SearchRecord } from './components/SearchRecord';
 import logo from './images/qantas-logo.png';
-import { callApi } from './utils';
+import { callApi, sortByPrice } from './utils';
 
 function App() {
     const [results, setResults] = useState<IHotel[]>([]);
@@ -60,16 +60,5 @@ function App() {
         </Container>
     );
 }
-
-const sortByPrice = (sortOrder: string, results: IHotel[]) => {
-    const sortedResults = results.sort((hotelA, hotelB) => {
-        const priceHotelA = hotelA.offer.displayPrice.amount;
-        const priceHotelB = hotelB.offer.displayPrice.amount;
-        return sortOrder === 'l2h'
-            ? priceHotelA - priceHotelB
-            : priceHotelB - priceHotelA;
-    });
-    return [...sortedResults];
-};
 
 export default App;
