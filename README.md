@@ -47,3 +47,4 @@ Starts simple light weight json-server to serve api responses.
 - No redux: This app does not use centralized application state management libraries like redux because this would be an overkill for simple use case like this as there is only one page with very little user interaction. Instead app state is managed locally in `App.tsx` through `useState` hook.
 - `select` component displays differently in chrome and safari. In safari, right side arrow button is displayed in blue color while in chrome it is displayed in black color. No css code has been added to fix this inconsistency.
 - Hotel images are randomly picked from unsplash api and it may differ each time page is reloaded. In real application, it is assumed that preview image url will point to specific hotel images.
+- Default sorting of results by price low to high is assumed on page reload.
