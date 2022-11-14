@@ -34,6 +34,7 @@ export const TitleWrapper = styled.div`
 `;
 export const StyledH3 = styled.h3`
     margin: 0;
+    max-width: 310px;
     font-weight: 600;
     white-space: nowrap;
     overflow: hidden;
