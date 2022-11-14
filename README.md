@@ -1,46 +1,42 @@
-# Getting Started with Create React App
+# Qantas Hotels
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) typescript template.
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, we have following scripts:
 
 ### `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### `yarn run mock-server`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Starts simple light weight json-server to serve api responses.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Steps to run application locally
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Execute following steps in sequence 
 
-### `yarn eject`
+- Clone this repo from develop branch onto local machine with node installed.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Change to project root directory `qantas-hotels`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Run `yarn` to install project dependencies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Run `yarn run mock-server` to launch json server at port 3001
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Run `yarn start` to launch application on port 3000
 
-## Learn More
+![ApplicationLaunch-Chrome](https://user-images.githubusercontent.com/40814889/201554402-a4bf54a6-8dc6-475d-bbd2-7bab5c095040.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Keys considerations while development
+- json-server: This npm package has been used to serve api response through axios client. Though, we could have directly imported `data.json` into component but this approach was not typescript safe.
+- No redux: This app does not use centralized application state management libraries like redux because this would be an overkill for simple use case like this as there is only one page with very little user interaction. Instead app state is managed locally in `App.tsx` through `useState` hook.
